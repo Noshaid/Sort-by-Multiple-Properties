@@ -1,0 +1,44 @@
+struct Student {
+    let rollNumber: UInt
+    let name: String
+    let address: String
+    let age: UInt8
+}
+
+extension Student {
+    static var students: [Student] = [
+        Student(rollNumber: 1, name: "Horst-Peter Krafft", address: "Viersen", age: 54),
+        Student(rollNumber: 2, name: "Armin Berger", address: "Rüthi (Sg)", age: 63),
+        Student(rollNumber: 3, name: "Levi Black", address: "Southampton", age: 45),
+        Student(rollNumber: 4, name: "Paula Palmer", address: "Perth", age: 67),
+        Student(rollNumber: 5, name: "Arthur Fisher", address: "Pomona", age: 29),
+        Student(rollNumber: 6, name: "Alma Johansen", address: "Assens", age: 38),
+        Student(rollNumber: 7, name: "Björn Jesse", address: "Oberhof", age: 54),
+        Student(rollNumber: 8, name: "Judith Fletcher", address: "Perth", age: 66)
+    ]
+}
+
+let sortedByAddress = Student.students.sorted {
+   return $0.address < $1.address
+}
+print(sortedByAddress)
+
+let sortedByAddressAndAge = Student.students.sorted {
+    if $0.address == $1.address {
+        return $0.age < $1.age
+    }
+    return $0.address < $1.address
+}
+print(sortedByAddressAndAge)
+
+let sortedByAddressAgeAndRollNumber = Student.students.sorted {
+    return ($0.address, $0.age, $0.rollNumber) <
+           ($1.address, $1.age, $1.rollNumber)
+}
+print(sortedByAddressAgeAndRollNumber)
+
+let sortedByAddressAgeAndRollNumber1 = Student.students.sorted {
+    return ($0.address, $0.age, $1.rollNumber) <
+           ($1.address, $1.age, $0.rollNumber)
+}
+print(sortedByAddressAgeAndRollNumber1)
